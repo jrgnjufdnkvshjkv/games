@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- product section start -->
+  <div class="product_section layout_padding">
+    <div class="container">
+      <div class="product_text">Our <span style="color: #5ca0e9;">products</span></div>
+      <p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>
+      <div class="product_section_2">
+        <div class="row">
+          {% for vid in video %}
+          <div class="col-md-6">
+            <div class="image_2"><img src={{vid.img.url}}></div>
+            <div class="price_text">Price $ <span style="color: #3a3a38;">{{vid.price }}</span></div>
+            <a href="{% url 'videodetailView' vid.pk %}"> <h1 class=game_text">{{ vid.name }}</h1></a>
+            <p class="long_text">{{vid.bio}}</p>
+            <h1>{{vid.id}}</h1>
+          </div>
+        {% endfor %}
+          <h1>Remot boshlandi</h1>
+          {% for rem in remot %}
+          <div class="col-md-6">
+            <div class="image_2"><img src={{rem.img.url}}></div>
+            <div class="price_text">Price $ <span style="color: #3a3a38;">{{rem.price }}</span></div>
+            <a href= "{% url 'remotdetailView' rem.pk %} "> <h1 class="game_text">{{ rem.name }}</h1></a>
+            <p class="long_text">{{rem.bio}}</p>
+           <h1>{{rem.id}}</h1>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+      <div class="see_main">
+        <div class="see_bt"><a href="#">See More</a></div>
+      </div>
+    </div>
+  </div>
+  <!-- product section end -->
+  {% endblock content %}
